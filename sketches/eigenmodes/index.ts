@@ -9,38 +9,47 @@ const WIDTH = 20;
 const HEIGHT = 20;
 export const ELEMS = ROWS * COLUMNS;
 const idx = (row: number, column: number) => (row * COLUMNS + column);
-let harmonic = 20;
-export const setHarmonic = (h: number) => (harmonic = Number(h));
-export const getHarmonic = () => harmonic;
 
-export default function s(sketch: p5) {
-  let t = 0.0;
-  const laplacian = Matrix.zeros(ELEMS, ELEMS);
-  for (let i = 0; i < ROWS; i++) {
-    for (let j = 0; j < COLUMNS; j++) {
-      let deg = (i > 0 ? 1 : 0) + (i < ROWS - 1 ? 1 : 0) + (j > 0 ? 1 : 0) + (j < COLUMNS - 1 ? 1 : 0);
-      laplacian.set(idx(i, j), idx(i, j), deg);
-      if (i > 0) {
-        laplacian.set(idx(i, j), idx(i - 1, j), -1.0);
-        laplacian.set(idx(i - 1, j), idx(i, j), -1.0);
-      }
-      if (i < ROWS - 1) {
-        laplacian.set(idx(i, j), idx(i + 1, j), -1.0);
-        laplacian.set(idx(i + 1, j), idx(i, j), -1.0);
-      }
-      if (j > 0) {
-        laplacian.set(idx(i, j), idx(i, j - 1), -1.0);
-        laplacian.set(idx(i, j - 1), idx(i, j), -1.0);
-      }
-      if (j < COLUMNS - 1) {
-        laplacian.set(idx(i, j), idx(i, j + 1), -1.0);
-        laplacian.set(idx(i, j + 1), idx(i, j), -1.0);
+let eigendecomp: EigenvalueDecomposition | null = null;
+
+const computeEigendecomp = () => {
+  if (eigendecomp === null) {
+    const laplacian = Matrix.zeros(ELEMS, ELEMS);
+    for (let i = 0; i < ROWS; i++) {
+      for (let j = 0; j < COLUMNS; j++) {
+        let deg = (i > 0 ? 1 : 0) + (i < ROWS - 1 ? 1 : 0) + (j > 0 ? 1 : 0) + (j < COLUMNS - 1 ? 1 : 0);
+        laplacian.set(idx(i, j), idx(i, j), deg);
+        if (i > 0) {
+          laplacian.set(idx(i, j), idx(i - 1, j), -1.0);
+          laplacian.set(idx(i - 1, j), idx(i, j), -1.0);
+        }
+        if (i < ROWS - 1) {
+          laplacian.set(idx(i, j), idx(i + 1, j), -1.0);
+          laplacian.set(idx(i + 1, j), idx(i, j), -1.0);
+        }
+        if (j > 0) {
+          laplacian.set(idx(i, j), idx(i, j - 1), -1.0);
+          laplacian.set(idx(i, j - 1), idx(i, j), -1.0);
+        }
+        if (j < COLUMNS - 1) {
+          laplacian.set(idx(i, j), idx(i, j + 1), -1.0);
+          laplacian.set(idx(i, j + 1), idx(i, j), -1.0);
+        }
       }
     }
+    eigendecomp = new EigenvalueDecomposition(laplacian);
   }
-  const eigendecomp = new EigenvalueDecomposition(laplacian);
-  const eigenvalues = eigendecomp.realEigenvalues;
-  const eigenmodes = eigendecomp.eigenvectorMatrix;
+}
+
+export interface EigenmodesProps {
+  harmonic: number;
+}
+
+const Eigenmodes = (props: EigenmodesProps) => (sketch: p5) =>{
+  let t = 0.0;
+  computeEigendecomp();
+  const eigenvalues = eigendecomp!.realEigenvalues;
+  const eigenmodes = eigendecomp!.eigenvectorMatrix;
 
   sketch.setup = function setup() {
     sketch.createCanvas(WIDTH * COLUMNS, HEIGHT * ROWS);
@@ -48,6 +57,7 @@ export default function s(sketch: p5) {
 
   sketch.draw = function draw() {
     t += 1.0 / 60;
+    const { harmonic } = props;
     sketch.background(128);
 
     let eigenmode = [];
@@ -75,4 +85,6 @@ export default function s(sketch: p5) {
       }
     }
   };
-}
+};
+
+export default Eigenmodes;

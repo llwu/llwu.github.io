@@ -8,15 +8,19 @@ const P5Wrapper = dynamic(import('react-p5-wrapper'), {
   ssr: false,
 }) as any;
 
+const DEFAULT_HARMONIC = 20;
+
 const EigenmodePage: React.FunctionComponent<{}> = () => {
-  const { default: sketch, getHarmonic, setHarmonic, ELEMS } = require('sketches/eigenmodes');
+  const { default: Eigenmodes, EigenmodesProps, ELEMS } = require('sketches/eigenmodes');
+  const eigenmodesProps = { harmonic: DEFAULT_HARMONIC };
   const handleHarmonic = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!(Number(e.target.value) >= 0)) {
-      setHarmonic(0);
-    } else if (!(Number(e.target.value) < ELEMS)) {
-      setHarmonic(ELEMS - 1);
+    const h = Number(e.target.value);
+    if (!(h >= 0)) {
+      eigenmodesProps.harmonic = 0;
+    } else if (!(h < ELEMS)) {
+      eigenmodesProps.harmonic = ELEMS - 1;
     } else {
-      setHarmonic(e.target.value)
+      eigenmodesProps.harmonic = h;
     }
   };
   return (
@@ -30,9 +34,9 @@ const EigenmodePage: React.FunctionComponent<{}> = () => {
           <a>Lawrence Wu</a>
         </Link>
       </h1>
-      Eigenvalue #<input type="number" defaultValue={20} onChange={handleHarmonic} />
+      Eigenvalue #<input type="number" defaultValue={DEFAULT_HARMONIC} onChange={handleHarmonic} />
       (range from 0 to {ELEMS - 1})
-      <P5Wrapper sketch={sketch}/>
+      <P5Wrapper sketch={Eigenmodes(eigenmodesProps)}/>
     </Layout>
   )
 }
