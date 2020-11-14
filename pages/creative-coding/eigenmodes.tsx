@@ -37,6 +37,13 @@ const EigenmodePage: React.FunctionComponent<{}> = () => {
       Eigenvalue #<input type="number" defaultValue={DEFAULT_HARMONIC} onChange={handleHarmonic} />
       (range from 0 to {ELEMS - 1})
       <P5Wrapper sketch={Eigenmodes(eigenmodesProps)}/>
+      <a
+        href="https://github.com/llwu/llwu.github.io/blob/master/sketches/eigenmodes/index.ts"
+        target="_blank"
+        rel="noreferrer"
+      >
+        View Source on GitHub
+      </a>
     </Layout>
   )
 }
