@@ -17,23 +17,19 @@ const computeEigendecomp = () => {
     const laplacian = Matrix.zeros(ELEMS, ELEMS);
     for (let i = 0; i < ROWS; i++) {
       for (let j = 0; j < COLUMNS; j++) {
-        let deg = (i > 0 ? 1 : 0) + (i < ROWS - 1 ? 1 : 0) + (j > 0 ? 1 : 0) + (j < COLUMNS - 1 ? 1 : 0);
+        let deg = ((i > 0) ? 1 : 0) + ((i < ROWS - 1) ? 1 : 0) + ((j > 0) ? 1 : 0) + ((j < COLUMNS - 1) ? 1 : 0);
         laplacian.set(idx(i, j), idx(i, j), deg);
         if (i > 0) {
           laplacian.set(idx(i, j), idx(i - 1, j), -1.0);
-          laplacian.set(idx(i - 1, j), idx(i, j), -1.0);
         }
         if (i < ROWS - 1) {
           laplacian.set(idx(i, j), idx(i + 1, j), -1.0);
-          laplacian.set(idx(i + 1, j), idx(i, j), -1.0);
         }
         if (j > 0) {
           laplacian.set(idx(i, j), idx(i, j - 1), -1.0);
-          laplacian.set(idx(i, j - 1), idx(i, j), -1.0);
         }
         if (j < COLUMNS - 1) {
           laplacian.set(idx(i, j), idx(i, j + 1), -1.0);
-          laplacian.set(idx(i, j + 1), idx(i, j), -1.0);
         }
       }
     }
@@ -50,6 +46,7 @@ const Eigenmodes = (props: EigenmodesProps) => (sketch: p5) =>{
   computeEigendecomp();
   const eigenvalues = eigendecomp!.realEigenvalues;
   const eigenmodes = eigendecomp!.eigenvectorMatrix;
+  let eigenmode = [...eigenvalues];  // just to copy the dimension
 
   sketch.setup = function setup() {
     sketch.createCanvas(WIDTH * COLUMNS, HEIGHT * ROWS);
@@ -59,10 +56,8 @@ const Eigenmodes = (props: EigenmodesProps) => (sketch: p5) =>{
     t += 1.0 / 60;
     const { harmonic } = props;
     sketch.background(128);
-
-    let eigenmode = [];
     for (let i = 0; i < ELEMS; i++) {
-      eigenmode.push(eigenmodes.get(i, harmonic));
+      eigenmode[i] = eigenmodes.get(i, harmonic);
     }
     const magnitudes = eigenmode.map(Math.abs);
     const maxM = Math.max(...magnitudes);

@@ -3,9 +3,13 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Layout from 'components/Layout';
 
+import { Posts, TagCounts } from 'metadata/posts';
+import TagLink from 'components/TagLink';
+import BlogItem from 'components/BlogItem';
+
 export const config = { amp: 'hybrid' }
 
-const CreativeCodingPage = () => {
+const BlogPage = () => {
   const amp = useAmp() ? '.amp' : '';
   const structuredData = {
     "@context": "https://schema.org",
@@ -18,29 +22,25 @@ const CreativeCodingPage = () => {
     },{
       "@type": "ListItem",
       "position": 2,
-      "name": "Creative Coding",
+      "name": "Blog",
     }]
   };
-
   return (
-    <Layout title="Creative Coding // Lawrence Wu" description="A collection of sketches I've made.">
+    <Layout title="Blog // Lawrence Wu" description="Speculating about how society and the world works.">
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
       <h1>
-        Creative Coding //{" "}
+        Blog // {" "}
         <Link href={`/${amp && 'index'}${amp}`}>
           <a>Lawrence Wu</a>
         </Link>
       </h1>
+      Tags: {TagCounts.map((tag: any, i) => <>{i === 0 ? '' : ', '}<TagLink tag={tag[0]} />{` (${tag[1]})`}</>)}
       <hr />
-      <h3>
-        <Link href="/creative-coding/eigenmodes">
-          <a>Eigenmodes</a>
-        </Link>
-      </h3>
+      {Posts.map(post => <BlogItem id={post.id} />)}
     </Layout>
   );
 };
 
-export default CreativeCodingPage;
+export default BlogPage;

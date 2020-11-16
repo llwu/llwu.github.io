@@ -1,5 +1,6 @@
 import * as React from "react";
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import Link from 'next/link';
 import Layout from 'components/Layout';
 
@@ -11,6 +12,26 @@ const P5Wrapper = dynamic(import('react-p5-wrapper'), {
 const DEFAULT_HARMONIC = 20;
 
 const EigenmodePage: React.FunctionComponent<{}> = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Lawrence Wu",
+      "item": "https://llwu.me",
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Creative Coding",
+      "item": "https://llwu.me/creative-coding",
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Eigenmodes",
+    }]
+  };
+
   const { default: Eigenmodes, EigenmodesProps, ELEMS } = require('sketches/eigenmodes');
   const eigenmodesProps = { harmonic: DEFAULT_HARMONIC };
   const handleHarmonic = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +45,13 @@ const EigenmodePage: React.FunctionComponent<{}> = () => {
     }
   };
   return (
-    <Layout title="Eigenmodes // Creative Coding // Lawrence Wu">
+    <Layout
+      title="Eigenmodes // Creative Coding // Lawrence Wu"
+      description="Visualization of solutions to the wave equation on a graph, by eigendecomposition of the Laplacian."
+    >
+      <Head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      </Head>
       <h1>
         Eigenmodes //{' '}
         <Link href="/creative-coding">
@@ -35,8 +62,10 @@ const EigenmodePage: React.FunctionComponent<{}> = () => {
         </Link>
       </h1>
       Eigenvalue #<input type="number" defaultValue={DEFAULT_HARMONIC} onChange={handleHarmonic} />
-      (range from 0 to {ELEMS - 1})
+      {' '}(range from 0 to {ELEMS - 1})
+      <hr />
       <P5Wrapper sketch={Eigenmodes(eigenmodesProps)}/>
+      <hr />
       <a
         href="https://github.com/llwu/llwu.github.io/blob/master/sketches/eigenmodes/index.ts"
         target="_blank"

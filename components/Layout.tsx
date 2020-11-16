@@ -5,24 +5,29 @@ import Head from 'next/head';
 type Props = {
   children?: ReactNode
   title?: string
+  description?: string
 };
 
-const Layout = ({ children, title = 'Lawrence Wu' }: Props) => (
+const Layout = ({ children, title = 'Lawrence Wu', description = '' }: Props) => (
   <div>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="shortcut icon" href="/favicon.ico" />
-      <meta name="description" content="Personal Site of Lawrence Wu" />
+      <meta name="description" content={description} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content="@llllvvuu" />
       <meta property="og:title" content="Lawrence Wu" />
-      <meta property="og:description" content="Personal Site of Lawrence Wu" />
-      <meta property="og:url" content="https://llwu.me/" />
+      <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
     </Head>
-    {children}
+    <div style={{
+      maxWidth: '900px',
+      margin: 'auto',
+      fontFamily: 'Georgia,Times,Times New Roman,serif',
+    }}>
+      {children}
+    </div>
   </div>
 )
 

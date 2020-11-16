@@ -3,9 +3,10 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Layout from 'components/Layout';
 
-export const config = { amp: 'hybrid' }
+import { Posts } from 'metadata/posts';
+import BlogItem from 'components/BlogItem';
 
-const CreativeCodingPage = () => {
+const TagPage = (tag: string) => () => {
   const amp = useAmp() ? '.amp' : '';
   const structuredData = {
     "@context": "https://schema.org",
@@ -18,29 +19,33 @@ const CreativeCodingPage = () => {
     },{
       "@type": "ListItem",
       "position": 2,
-      "name": "Creative Coding",
+      "name": "Blog",
+      "item": "https://llwu.me/blog",
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": `#${tag}`,
     }]
   };
 
   return (
-    <Layout title="Creative Coding // Lawrence Wu" description="A collection of sketches I've made.">
+    <Layout title={`#${tag} // Blog // Lawrence Wu"`} description={`All posts tagged #${tag}.`}>
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
       <h1>
-        Creative Coding //{" "}
+        #{tag} // {" "}
+        <Link href={`/blog${amp}`}>
+          <a>Blog</a>
+        </Link> // {" "}
         <Link href={`/${amp && 'index'}${amp}`}>
           <a>Lawrence Wu</a>
         </Link>
       </h1>
       <hr />
-      <h3>
-        <Link href="/creative-coding/eigenmodes">
-          <a>Eigenmodes</a>
-        </Link>
-      </h3>
+      {Posts.filter(post => post.tags.includes(tag)).map(post => <BlogItem id={post.id} />)}
     </Layout>
   );
 };
 
-export default CreativeCodingPage;
+export default TagPage;
