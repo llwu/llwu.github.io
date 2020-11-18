@@ -1,10 +1,18 @@
 const Posts = [
   {
-    'id': 'years-later-highlights-from-undergrad-math',
-    'title': 'Years later: highlights from undergrad math',
-    'description': 'A list of links to revisit to recall good times and inspire an appreciation of math.',
+    'id': 'my-principles',
+    'title': 'My principles (at the time of this writing)',
+    'description': 'What I think matters and why.',
+    'date': new Date('2020-11-18T02:35:00Z'),
+    'tags': ['ethics'],
+    'redditUrl': '',
+  },
+  {
+    'id': 'math-bangers',
+    'title': '[Linkpost] Math bangers',
+    'description': 'A list of links to inspire an appreciation of math.',
     'date': new Date('2020-11-13T12:00:00Z'),
-    'tags': ['math'],
+    'tags': ['math', 'linkpost'],
     'redditUrl': '',
   },
 ];

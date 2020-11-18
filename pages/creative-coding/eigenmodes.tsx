@@ -46,14 +46,14 @@ const EigenmodePage: React.FunctionComponent<{}> = () => {
   };
   return (
     <Layout
-      title="Eigenmodes // Creative Coding // Lawrence Wu"
+      title="Eigenmodes (WIP) // Creative Coding // Lawrence Wu"
       description="Visualization of solutions to the wave equation on a graph, by eigendecomposition of the Laplacian."
     >
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
       <h1>
-        Eigenmodes //{' '}
+        Eigenmodes (WIP) //{' '}
         <Link href="/creative-coding">
           <a>Creative Coding</a>
         </Link> //{' '}

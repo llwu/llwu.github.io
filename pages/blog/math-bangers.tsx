@@ -3,23 +3,17 @@ import BlogPost from 'components/BlogPost';
 export const config = { amp: 'hybrid' }
 
 const BlogPostPage = () => (
-  <BlogPost id="years-later-highlights-from-undergrad-math">
-    Though math is my first love and remains a deep influence to my worldview and pursuits,
-    I haven't been dedicating so much time to pure math
-    after undergrad. However, I've recently been inspired through the work of the{' '}
-    <a href="https://qualiaresearchinstitute.org" target="_blank" rel="noreferrer">
-      Qualia Research Institute
+  <BlogPost id="math-bangers">
+    <a href="https://www.nature.com/articles/ncomms10340" target="_blank" rel="noreferrer">
+      Recent work in neuroscience
     </a>{' '}
-    to re-engage with symmetry, not only as an aesthetic pursuit but also as
-    a deep foundation of reality and consciousness - as well as with{' '}
-    <a href="https://qualiaresearchinstitute.org" target="_blank" rel="noreferrer">
-      harmonic analysis
-    </a>{' '}
-    ("If you want to find the secrets of the universe, think in terms of energy, frequency and vibration."
-    - Nikola Tesla).
-    This has motivated me to cultivate a list of satisfying concepts from my math undergrad,
-    which can be used both to revisit good times and inspire younger generations
-    to think about math.
+    has gotten me excited about pure math again,
+    so I decided to relive some good times
+    and catalogue some of the coolest things I've encountered in math.
+    Hopefully this will also help me out whenever I have to explain to friends,
+    family, or strangers why I think math is so beautiful, or when I have an
+    opportunity to work with and try to inspire kids - I don't know why, but I've always drawn a blank
+    in these situations!
     <ul>
       <li>
         <a href="https://en.wikipedia.org/wiki/Stokes%27_theorem">
@@ -34,6 +28,16 @@ const BlogPostPage = () => (
       <li>
         <a href="https://en.wikipedia.org/wiki/Spectral_theorem">
           Spectral theorem
+        </a>
+      </li>
+      <li>
+        <a href="https://en.wikipedia.org/wiki/Renormalization">
+          Renormalization
+        </a>
+      </li>
+      <li>
+        <a href="https://en.wikipedia.org/wiki/Noether%27s_theorem">
+          Noether's theorem
         </a>
       </li>
       <li>

@@ -36,7 +36,7 @@ const CreativeCodingPage = () => {
       <hr />
       <h3>
         <Link href="/creative-coding/eigenmodes">
-          <a>Eigenmodes</a>
+          <a>Eigenmodes (WIP)</a>
         </Link>
       </h3>
     </Layout>
