@@ -24,9 +24,8 @@ const BlogPostPage = () => (
     regarding anything as truly external. Unlike Rawls' original argument,
     I don't believe this has to take the form of maximin - the well-being
     of the average person still matters to me. Instead, I end up
-    somewhere on the negative utilitarianism spectrum where long tails
-    of suffering dominate enough such that some similarities to
-    maximin or rule utilitarianism could manifest.
+    somewhere on the negative utilitarianism spectrum - though some similarities to
+    maximin or rule utilitarianism could manifest due to long tails of suffering.
     <h3>2) Focusing on attractor dynamics over transient dynamics</h3>
     <p>
       At the largest scale, this principle looks a lot like{' '}
