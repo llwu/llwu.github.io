@@ -1,0 +1,42 @@
+
+        <?xml version="1.0" encoding="UTF-8"?>
+        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            
+                        <url>
+                            <loc>https://llwu.me</loc>
+                        </url>
+                    
+                        <url>
+                            <loc>https://llwu.me/blog</loc>
+                        </url>
+                    
+                        <url>
+                            <loc>https://llwu.me/blog/math-bangers</loc>
+                        </url>
+                    
+                        <url>
+                            <loc>https://llwu.me/blog/my-principles</loc>
+                        </url>
+                    
+                        <url>
+                            <loc>https://llwu.me/creative-coding/eigenmodes</loc>
+                        </url>
+                    
+                        <url>
+                            <loc>https://llwu.me/creative-coding</loc>
+                        </url>
+                    
+                        <url>
+                            <loc>https://llwu.me/blog/tags/ethics</loc>
+                        </url>
+                    
+                        <url>
+                            <loc>https://llwu.me/blog/tags/linkpost</loc>
+                        </url>
+                    
+                        <url>
+                            <loc>https://llwu.me/blog/tags/math</loc>
+                        </url>
+                    
+        </urlset>
+    
