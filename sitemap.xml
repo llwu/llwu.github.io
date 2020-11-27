@@ -7,35 +7,23 @@
                         </url>
                     
                         <url>
+                            <loc>https://llwu.me/blog/bayes-contingency-table</loc>
+                        </url>
+                    
+                        <url>
                             <loc>https://llwu.me/blog</loc>
                         </url>
                     
                         <url>
-                            <loc>https://llwu.me/blog/math-bangers</loc>
+                            <loc>https://llwu.me/visuals/eigenmodes</loc>
                         </url>
                     
                         <url>
-                            <loc>https://llwu.me/blog/my-principles</loc>
+                            <loc>https://llwu.me/visuals</loc>
                         </url>
                     
                         <url>
-                            <loc>https://llwu.me/creative-coding/eigenmodes</loc>
-                        </url>
-                    
-                        <url>
-                            <loc>https://llwu.me/creative-coding</loc>
-                        </url>
-                    
-                        <url>
-                            <loc>https://llwu.me/blog/tags/ethics</loc>
-                        </url>
-                    
-                        <url>
-                            <loc>https://llwu.me/blog/tags/linkpost</loc>
-                        </url>
-                    
-                        <url>
-                            <loc>https://llwu.me/blog/tags/math</loc>
+                            <loc>https://llwu.me/blog/tags/[tag]</loc>
                         </url>
                     
         </urlset>
