@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import Link from 'next/link';
 import Head from 'next/head';
 
 type Props = {
@@ -14,10 +13,16 @@ const Layout = ({ children, title = 'Lawrence Wu', description = '' }: Props) =>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <link rel="shortcut icon" href="/favicon.ico" />
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="RSS feed for blog posts"
+        href="https://llwu.me/rss.xml"
+      />
       <meta name="description" content={description} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content="@llllvvuu" />
-      <meta property="og:title" content="Lawrence Wu" />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
     </Head>

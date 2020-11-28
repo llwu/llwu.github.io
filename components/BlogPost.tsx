@@ -1,11 +1,11 @@
 import React from 'react';
 import { useAmp } from 'next/amp';
-import Link from 'next/link';
 import Head from 'next/head';
 import Layout from 'components/Layout';
 
 import { PostMap } from 'metadata/posts';
 import TagLink from 'components/TagLink';
+import Quicklink from 'components/Quicklink';
 
 type Props = {
   children?: React.ReactNode
@@ -38,14 +38,11 @@ const BlogPost = ({ children, id }: Props) => {
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
+      {!amp && <Quicklink />}
       <h1>
         {PostMap[id].title} // {" "}
-        <Link href={`/blog${amp}`}>
-          <a>Blog</a>
-        </Link> // {" "}
-        <Link href={`/${amp && 'index'}${amp}`}>
-          <a>Lawrence Wu</a>
-        </Link>
+        <a href={`/blog${amp}`}>Blog</a> // {" "}
+        <a href={`/${amp && 'index'}${amp}`}>Lawrence Wu</a>
       </h1>
       <h3>
         {PostMap[id].date.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}{' '}
@@ -53,16 +50,21 @@ const BlogPost = ({ children, id }: Props) => {
       </h3>
       <hr />
       {children}
-      {PostMap[id].redditUrl && <>
-        <hr />
-        <a
-          href={PostMap[id].redditUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Comment on Reddit
-        </a>
-      </>}
+      <hr />
+      {PostMap[id].redditUrl && <><a
+        href={PostMap[id].redditUrl}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Comment on Reddit
+      </a><br /></>}
+      {PostMap[id].redditUrl && <a
+        href={PostMap[id].twitterUrl}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Comment on Twitter
+      </a>}
     </Layout>
   );
 };
