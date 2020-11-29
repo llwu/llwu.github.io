@@ -1,0 +1,20 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>Lawrence Wu's Blog</title>
+      <link>https://llwu.me/blog</link>
+      <description>Lawrence Wu's Blog RSS Feed</description>
+      <language>en</language>
+      <lastBuildDate>Thu, 26 Nov 2020 02:35:00 GMT</lastBuildDate>
+      <atom:link href="https://llwu.me/rss.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://llwu.me.com/blog/bayes-contingency-table</guid>
+    <title>Bayesian analysis of contingency tables (feat. COVID-19 vaccines)</title>
+    <link>https://llwu.me/blog/bayes-contingency-table</link>
+    <description>2x2, mxn, hierarchical, multiple covariates, approximation, prior and posterior plots</description>
+    <pubDate>Thu, 26 Nov 2020 02:35:00 GMT</pubDate>
+  </item>
+
+    </channel>
+  </rss>
