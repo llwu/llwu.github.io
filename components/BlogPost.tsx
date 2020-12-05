@@ -5,7 +5,6 @@ import Layout from 'components/Layout';
 
 import { PostMap } from 'metadata/posts';
 import TagLink from 'components/TagLink';
-import Quicklink from 'components/Quicklink';
 
 type Props = {
   children?: React.ReactNode
@@ -38,7 +37,6 @@ const BlogPost = ({ children, id }: Props) => {
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
-      {!amp && <Quicklink />}
       <h1>
         {PostMap[id].title} // {" "}
         <a href={`/blog${amp}`}>Blog</a> // {" "}

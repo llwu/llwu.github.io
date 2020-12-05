@@ -1,7 +1,6 @@
 import { useAmp } from 'next/amp';
 import Head from 'next/head';
 import Layout from 'components/Layout';
-import Quicklink from 'components/Quicklink';
 
 export const config = { amp: 'hybrid', unstable_runtimeJS: false };
 
@@ -27,7 +26,6 @@ const VisualsPage = () => {
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
-      {!amp && <Quicklink />}
       <h1>
         Visuals //{" "}
         <a href={`/${amp && 'index'}${amp}`}>

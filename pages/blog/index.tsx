@@ -6,7 +6,6 @@ import Layout from 'components/Layout';
 import { Posts, TagCounts } from 'metadata/posts';
 import TagLink from 'components/TagLink';
 import BlogItem from 'components/BlogItem';
-import Quicklink from 'components/Quicklink';
 
 export const config = { amp: 'hybrid', unstable_runtimeJS: false };
 
@@ -31,7 +30,6 @@ const BlogPage = () => {
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
-      {!amp && <Quicklink />}
       <h1>
         Blog // {" "}
         <a href={`/${amp && 'index'}${amp}`}>

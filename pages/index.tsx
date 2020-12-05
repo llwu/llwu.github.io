@@ -1,6 +1,5 @@
 import { useAmp } from 'next/amp';
 import Layout from 'components/Layout';
-import Quicklink from 'components/Quicklink';
 
 export const config = { amp: 'hybrid', unstable_runtimeJS: false };
 
@@ -9,7 +8,6 @@ const IndexPage = () => {
 
   return (
     <Layout title="Lawrence Wu" description="Personal Site of Lawrence Wu">
-      {!amp && <Quicklink />}
       <h1 style={{ marginBottom: 0 }}>Lawrence Wu</h1>
       <a href="https://twitter.com/llllvvuu" target="_blank" rel="noreferrer">
         @llllvvuu

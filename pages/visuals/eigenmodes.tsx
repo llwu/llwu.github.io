@@ -2,8 +2,6 @@ import * as React from "react";
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Layout from 'components/Layout';
-import Quicklink from 'components/Quicklink';
-
 const P5Wrapper = dynamic(import('react-p5-wrapper'), {
   loading: () => <p>Loading...</p>,
   ssr: false,
@@ -52,7 +50,6 @@ const EigenmodePage: React.FunctionComponent<{}> = () => {
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
-      <Quicklink />
       <h1>
         Eigenmodes (WIP) //{' '}
         <a href="/visuals">Visuals</a> //{' '}

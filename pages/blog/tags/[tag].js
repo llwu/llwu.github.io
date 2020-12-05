@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { Posts, TagCounts } from 'metadata/posts';
 import BlogItem from 'components/BlogItem';
 import Layout from 'components/Layout';
-import Quicklink from 'components/Quicklink';
 
 export const config = { amp: 'hybrid', unstable_runtimeJS: false };
 
@@ -38,7 +37,6 @@ const TagPage = () => {
       <Head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
-      {!amp && <Quicklink />}
       <h1>
         #{tag} // {" "}
         <a href={`/blog${amp}`}>Blog</a> // {" "}
